@@ -15,10 +15,10 @@ int check_opcode_err(char *s)
 	int i;
 	char *errs[] = {
 		"push",
-		"put"
+		"pint"
 	};
 
-	for (i = 0; i < sizeof(errs) / sizeof(errs[i]); i++)
+	for (i = 0; i < (int)(sizeof(errs) / sizeof(errs[i])); i++)
 	{
 		if (strcmp(s, errs[i]) == 0)
 			return (0);
@@ -37,4 +37,6 @@ void print_opcode_err(char *opcode, int line_num)
 {
 	if (strcmp(opcode, "push") == 0)
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+	else if (strcmp(opcode, "pint") == 0)
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 }

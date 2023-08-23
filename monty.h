@@ -39,4 +39,5 @@ void free_dlist(stack_t *head);
 void pall(stack_t **stack, unsigned int line_number);
 int check_opcode_err(char *s);
 void print_opcode_err(char *opcode, int line_num);
+void pint(stack_t **stack, unsigned int line_number);
 #endif

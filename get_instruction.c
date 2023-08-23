@@ -5,7 +5,7 @@
 #include "monty.h"
 
 /**
- * p_instruction - process intruction.
+ * p_instruction - process instruction.
  * @str: string instruction
  * @ln: Line number from where code is executed
  * @stk: doubly linked list representation of a stack (or queue)
@@ -20,17 +20,18 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	trim(&instruction);
-	opcode = strtok(instruction, " /n");
+	opcode = strtok(instruction, " ");
 	while (instructions[i].opcode != NULL && opcode != NULL)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
 		{
-			data = strtok(NULL, " /n");
+			data = strtok(NULL, " ");
 			instructions[i].f(stk, ln);
-			if (check_opcode_err(data) == 0)
+			if (data != NULL && check_opcode_err(data) == 0)
 			{
 				print_opcode_err(data, ln);
 				free(instruction);

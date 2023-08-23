@@ -25,4 +25,5 @@ int check_num(char *s)
 		}
 		return (0);
 	}
+	return (1);
 }

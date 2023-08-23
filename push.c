@@ -15,6 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *curr_node = *stack;
 
 
+	(void)line_number;
 	if (data == NULL || check_num(data) != 0)
 	{
 		data = "push";
@@ -38,5 +39,4 @@ void push(stack_t **stack, unsigned int line_number)
 	curr_node->prev = new;
 	new->next = curr_node;
 	*stack = new;
-	(void)line_number;
 }
