@@ -21,6 +21,13 @@ void push(stack_t **stack, unsigned int line_number)
 		return;
 	}
 	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n", line_number);
+		data = "malloc";
+		return;
+	}
+	
 	new->next = NULL;
 	new->prev = NULL;
 	new->n = atoi(data);

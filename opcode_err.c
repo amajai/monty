@@ -18,9 +18,9 @@ int check_opcode_err(char *s)
 		"pint",
 		"pop",
 		"swap",
-		"add"
+		"add",
+		"malloc"
 	};
-
 	for (i = 0; i < (int)(sizeof(errs) / sizeof(errs[i])); i++)
 	{
 		if (strcmp(s, errs[i]) == 0)
