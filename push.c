@@ -14,10 +14,9 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	stack_t *curr_node = *stack;
 
-
-	(void)line_number;
 	if (data == NULL || check_num(data) != 0)
 	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		data = "push";
 		return;
 	}

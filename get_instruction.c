@@ -35,7 +35,6 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 			instructions[i].f(stk, ln);
 			if (data != NULL && check_opcode_err(data) == 0)
 			{
-				print_opcode_err(data, ln);
 				free(instruction);
 				free_dlist(*stk);
 				fclose(fp);

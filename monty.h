@@ -24,12 +24,12 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
-extern char *data;
 typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+extern char *data;
 void p_instruction(char *str, int ln, stack_t **stk, FILE *fp);
 char *_strdup(const char *str);
 void push(stack_t **head, unsigned int line_number);
@@ -38,7 +38,6 @@ void trim(char **str);
 void free_dlist(stack_t *head);
 void pall(stack_t **stack, unsigned int line_number);
 int check_opcode_err(char *s);
-void print_opcode_err(char *opcode, int line_num);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);

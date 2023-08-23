@@ -15,7 +15,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	int tempn;
 	int count = 0;
 
-	(void)line_number;
 	while (temp != NULL)
 	{
 		count++;
@@ -23,6 +22,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	}
 	if (count < 2)
 	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		data = "swap";
 		return;
 	}
