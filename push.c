@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (data == NULL || check_num(data) != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		data = "push";
+		data = "err";
 		return;
 	}
 	new = malloc(sizeof(stack_t));

@@ -25,7 +25,7 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		data = "div";
+		data = "err";
 		return;
 	}
 	prev_node = *stack;
