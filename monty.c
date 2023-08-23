@@ -5,7 +5,7 @@
 #include "monty.h"
 
 void v(void);
-char *data;
+data_t data;
 
 /**
  * main - Main monty program.
@@ -33,6 +33,7 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		return (EXIT_FAILURE);
 	}
+	data.is_stack = 1;
 	while (fgets(buf, sizeof(buf), fp) != NULL)
 	{
 		if (buf[strlen(buf) - 1] == '\n')

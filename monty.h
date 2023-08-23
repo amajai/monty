@@ -29,7 +29,21 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern char *data;
+/**
+ * struct data_s - data on value and program mode
+ * @val: the data value
+ * @is_stack: if 1, program use stack
+ * if 0, program use queue
+ *
+ * Description: data value to add to a node and
+ * program mode that change between stack and queue
+ */
+typedef struct data_s
+{
+	char *val;
+	int is_stack;
+} data_t;
+extern data_t data;
 void p_instruction(char *str, int ln, stack_t **stk, FILE *fp);
 char *_strdup(const char *str);
 void push(stack_t **head, unsigned int line_number);
@@ -53,4 +67,6 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 #endif

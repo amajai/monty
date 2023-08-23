@@ -14,34 +14,41 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	stack_t *curr_node = *stack;
 
-	if (data == NULL || check_num(data) != 0)
+	if (data.val == NULL || check_num(data.val) != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		data = "err";
+		data.val = "err";
 		return;
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		data = "malloc";
+		data.val = "malloc";
 		return;
 	}
 	new->next = NULL;
 	new->prev = NULL;
-	new->n = atoi(data);
+	new->n = atoi(data.val);
 
 	if (curr_node == NULL)
 	{
 		*stack = new;
 		return;
 	}
-
-	while (curr_node->prev != NULL)
+	if (data.is_stack)
 	{
-		curr_node = curr_node->prev;
+		curr_node->prev = new;
+		new->next = curr_node;
+		*stack = new;
 	}
-	curr_node->prev = new;
-	new->next = curr_node;
-	*stack = new;
+	else
+	{
+		while (curr_node->next != NULL)
+		{
+			curr_node = curr_node->next;
+		}
+		curr_node->next = new;
+		new->prev = curr_node;
+	}
 }

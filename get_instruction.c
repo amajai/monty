@@ -21,7 +21,7 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop}, {"sub", sub}, {"div", _div}, {"mul", mul},
 		{"mod", _mod}, {"pchar", pchar}, {"pstr", pstr},  {"rotl", rotl},
-		{"rotr", rotr}, {NULL, NULL}
+		{"rotr", rotr}, {"stack", stack}, {"queue", queue}, {NULL, NULL}
 	};
 	trim(&instruction);
 	opcode = strtok(instruction, " ");
@@ -36,9 +36,9 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 		{
 			if (strcmp(opcode, instructions[i].opcode) == 0)
 			{
-				data = strtok(NULL, " ");
+				data.val = strtok(NULL, " ");
 				instructions[i].f(stk, ln);
-				if (data != NULL && check_opcode_err(data) == 0)
+				if (data.val != NULL && check_opcode_err(data.val) == 0)
 					free_all_exit(instruction, stk, fp);
 				free(instruction);
 				return;
