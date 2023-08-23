@@ -31,6 +31,5 @@ void add(stack_t **stack, unsigned int line_number)
 	num = prev_node->n;
 	*stack = (*stack)->next;
 	(*stack)->n += num;
-	(*stack)->prev = NULL;
 	free(prev_node);
 }
