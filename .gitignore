@@ -1,0 +1,5 @@
+/monty_project
+.gitignore
+*
+!/**/
+!*.*
