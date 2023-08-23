@@ -35,8 +35,13 @@ int main(int ac, char **av)
 	}
 	while (fgets(buf, sizeof(buf), fp) != NULL)
 	{
-		p_instruction(buf, ln, &stack, fp);
-		ln += 1;
+		if (buf[strlen(buf) - 1] == '\n')
+			buf[strlen(buf) - 1] = '\0';
+		if (checkspace(buf) != 0)
+		{
+			p_instruction(buf, ln, &stack, fp);
+			ln += 1;
+		}
 	}
 	free_dlist(stack);
 	fclose(fp);

@@ -26,6 +26,11 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 	opcode = strtok(instruction, " ");
 	if (opcode != NULL)
 	{
+		if (opcode[0] == '#')
+		{
+			free(instruction);
+			return;
+		}
 		while (instructions[i].opcode != NULL)
 		{
 			if (strcmp(opcode, instructions[i].opcode) == 0)
@@ -33,21 +38,13 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 				data = strtok(NULL, " ");
 				instructions[i].f(stk, ln);
 				if (data != NULL && check_opcode_err(data) == 0)
-				{
-					free(instruction);
-					free_dlist(*stk);
-					fclose(fp);
-					exit(EXIT_FAILURE);
-				}
+					free_all_exit(instruction, stk, fp);
 				free(instruction);
 				return;
 			}
 			i++;
 		}
 		fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
-		free(instruction);
-		free_dlist(*stk);
-		fclose(fp);
-		exit(EXIT_FAILURE);
+		free_all_exit(instruction, stk, fp);
 	}
 }

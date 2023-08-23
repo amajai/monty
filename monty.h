@@ -47,4 +47,6 @@ void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
+void free_all_exit(char *str, stack_t **stk, FILE *fp);
+int checkspace(char *input);
 #endif
