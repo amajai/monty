@@ -17,7 +17,8 @@ int check_opcode_err(char *s)
 		"push",
 		"pint",
 		"pop",
-		"swap"
+		"swap",
+		"add"
 	};
 
 	for (i = 0; i < (int)(sizeof(errs) / sizeof(errs[i])); i++)

@@ -23,6 +23,7 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 	trim(&instruction);
