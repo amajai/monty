@@ -16,7 +16,8 @@ int check_opcode_err(char *s)
 	char *errs[] = {
 		"push",
 		"pint",
-		"pop"
+		"pop",
+		"swap"
 	};
 
 	for (i = 0; i < (int)(sizeof(errs) / sizeof(errs[i])); i++)
@@ -42,4 +43,6 @@ void print_opcode_err(char *opcode, int line_num)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 	else if (strcmp(opcode, "pop") == 0)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+	else if (strcmp(opcode, "swap") == 0)
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
 }
