@@ -19,6 +19,7 @@ int check_opcode_err(char *s)
 		"pop",
 		"swap",
 		"add",
+		"sub",
 		"malloc"
 	};
 	for (i = 0; i < (int)(sizeof(errs) / sizeof(errs[i])); i++)
