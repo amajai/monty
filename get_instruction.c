@@ -18,13 +18,8 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 	char *opcode, *instruction = _strdup(str);
 	int i = 0;
 	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{NULL, NULL}
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
+		{"add", add}, {"nop", nop}, {NULL, NULL}
 	};
 	trim(&instruction);
 	opcode = strtok(instruction, " ");
