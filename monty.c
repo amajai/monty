@@ -40,6 +40,5 @@ int main(int ac, char **av)
 	}
 	free_dlist(stack);
 	fclose(fp);
-
 	return (0);
 }

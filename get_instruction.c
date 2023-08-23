@@ -23,27 +23,30 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 	};
 	trim(&instruction);
 	opcode = strtok(instruction, " ");
-	while (instructions[i].opcode != NULL && opcode != NULL)
+	if (opcode != NULL)
 	{
-		if (strcmp(opcode, instructions[i].opcode) == 0)
+		while (instructions[i].opcode != NULL) 
 		{
-			data = strtok(NULL, " ");
-			instructions[i].f(stk, ln);
-			if (data != NULL && check_opcode_err(data) == 0)
+			if (strcmp(opcode, instructions[i].opcode) == 0)
 			{
+				data = strtok(NULL, " ");
+				instructions[i].f(stk, ln);
+				if (data != NULL && check_opcode_err(data) == 0)
+				{
+					free(instruction);
+					free_dlist(*stk);
+					fclose(fp);
+					exit(EXIT_FAILURE);
+				}
 				free(instruction);
-				free_dlist(*stk);
-				fclose(fp);
-				exit(EXIT_FAILURE);
+				return;
 			}
-			free(instruction);
-			return;
+			i++;
 		}
-		i++;
+		fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
+		free(instruction);
+		free_dlist(*stk);
+		fclose(fp);
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
-	free(instruction);
-	free_dlist(*stk);
-	fclose(fp);
-	exit(EXIT_FAILURE);
 }
