@@ -25,7 +25,7 @@ void p_instruction(char *str, int ln, stack_t **stk, FILE *fp)
 	opcode = strtok(instruction, " ");
 	if (opcode != NULL)
 	{
-		while (instructions[i].opcode != NULL) 
+		while (instructions[i].opcode != NULL)
 		{
 			if (strcmp(opcode, instructions[i].opcode) == 0)
 			{
